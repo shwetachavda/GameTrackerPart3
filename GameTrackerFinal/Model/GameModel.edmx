@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Game_info">
+          <Key>
+            <PropertyRef Name="gameID" />
+          </Key>
+          <Property Name="gameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gameType" Type="varchar" MaxLength="30" />
+          <Property Name="team1ID" Type="int" />
+          <Property Name="team2ID" Type="int" />
+          <Property Name="team1Name" Type="varchar" MaxLength="50" />
+          <Property Name="team2Name" Type="varchar" MaxLength="50" />
+          <Property Name="team1Score" Type="int" />
+          <Property Name="team2Score" Type="int" />
+          <Property Name="gameWinner" Type="varchar" MaxLength="5" />
+          <Property Name="weeks" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'comp2007-sql.dbo.Games' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="gameID" />
+          </Key>
+          <Property Name="gameID" Type="int" Nullable="false" />
+          <Property Name="gameWinner" Type="varchar" MaxLength="5" />
+          <Property Name="weeks" Type="date" />
+        </EntityType>
+        <EntityType Name="User_info">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="120" />
+          <Property Name="displayName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Users__userID__57A801BA">
+          <End Role="User_info" Type="Self.User_info" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_info">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GameModelStoreContainer">
+          <EntitySet Name="Game_info" EntityType="Self.Game_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_info" EntityType="Self.User_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Games].[gameID] AS [gameID], 
+    [Games].[gameWinner] AS [gameWinner], 
+    [Games].[weeks] AS [weeks]
+    FROM [dbo].[Games] AS [Games]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Users__userID__57A801BA" Association="Self.FK__Users__userID__57A801BA">
+            <End Role="User_info" EntitySet="User_info" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game_info">
+          <Key>
+            <PropertyRef Name="gameID" />
+          </Key>
+          <Property Name="gameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gameType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="team1ID" Type="Int32" />
+          <Property Name="team2ID" Type="Int32" />
+          <Property Name="team1Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="team2Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="team1Score" Type="Int32" />
+          <Property Name="team2Score" Type="Int32" />
+          <Property Name="gameWinner" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="weeks" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="User_info">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="displayName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__userID__57A801BA" FromRole="User_info" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User_info" Relationship="Self.FK__Users__userID__57A801BA" FromRole="Users" ToRole="User_info" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="gameID" />
+          </Key>
+          <Property Name="gameID" Type="Int32" Nullable="false" />
+          <Property Name="gameWinner" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="weeks" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK__Users__userID__57A801BA">
+          <End Role="User_info" Type="Self.User_info" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_info">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Game_info" EntityType="Self.Game_info" />
+          <EntitySet Name="User_info" EntityType="Self.User_info" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <AssociationSet Name="FK__Users__userID__57A801BA" Association="Self.FK__Users__userID__57A801BA">
+            <End Role="User_info" EntitySet="User_info" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GameModelStoreContainer" CdmEntityContainer="DefaultConnection">
+          <EntitySetMapping Name="Game_info">
+            <EntityTypeMapping TypeName="GameModel.Game_info">
+              <MappingFragment StoreEntitySet="Game_info">
+                <ScalarProperty Name="gameID" ColumnName="gameID" />
+                <ScalarProperty Name="gameType" ColumnName="gameType" />
+                <ScalarProperty Name="team1ID" ColumnName="team1ID" />
+                <ScalarProperty Name="team2ID" ColumnName="team2ID" />
+                <ScalarProperty Name="team1Name" ColumnName="team1Name" />
+                <ScalarProperty Name="team2Name" ColumnName="team2Name" />
+                <ScalarProperty Name="team1Score" ColumnName="team1Score" />
+                <ScalarProperty Name="team2Score" ColumnName="team2Score" />
+                <ScalarProperty Name="gameWinner" ColumnName="gameWinner" />
+                <ScalarProperty Name="weeks" ColumnName="weeks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_info">
+            <EntityTypeMapping TypeName="GameModel.User_info">
+              <MappingFragment StoreEntitySet="User_info">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="displayName" ColumnName="displayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GameModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="GameModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="gameID" ColumnName="gameID" />
+                <ScalarProperty Name="gameWinner" ColumnName="gameWinner" />
+                <ScalarProperty Name="weeks" ColumnName="weeks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

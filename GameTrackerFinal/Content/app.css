@@ -1,0 +1,182 @@
+﻿/* custom css file*/
+
+body {
+   background-color: black;
+}
+
+.navbar-brand{
+    font-family: Magneto ;
+    font-size: 45px;
+    margin-top:5px;
+    float: left;
+    padding: 15px;
+    line-height: 5px;
+}    
+.navbar-inverse  
+    { 
+       background: black;
+       border-color:  black;
+       border-spacing: 0px;
+       color: #FFFFFF;
+     }
+ .navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}
+.nav{
+    font-weight: bolder;
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+  .navbar-nav>li>a {
+      padding: 25px 20px;
+      font-size: 16px;
+  }
+.navbar-text{
+  padding: 9px 8px;
+  font-size: 16px;  
+  color:#fff;
+ }
+
+h1{
+    text-align:left;
+    color: deepskyblue;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+    font-weight:800;
+}
+label.control-label{
+    color: #ffd800;
+    font-size:18px;
+   font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+}
+
+/* Footer */
+i.fa.fa-github.fa-stack-2x.text-primary {
+    color: whitesmoke;
+}
+
+i.fa.fa-home.fa-lg {
+    color: whitesmoke;
+}
+
+div.navbar-text.pull-right a {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    color: whitesmoke;
+   
+}
+
+div.navbar-text.pull-left a {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    color: whitesmoke;
+}
+ 
+label#Username, label#Password, label{
+color: #ffd800;
+    font-size:18px;
+   font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+}
+ a#Register.text,h5{
+color: #ffd800;
+    font-size:14px;
+   font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+}
+
+ h4 strong{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+ color:  #ffd800;
+ font-size: 25px;
+ }
+
+ p#TeamName,p#TeamName1,p#TeamName2,p#TeamName3{
+     color:#FF4C3B;
+     font-size: 17.5px;
+     font-family: Forte;
+ }
+ p#Score,p#Score1,p#Score2,p#Score3{
+     color:  #ff006e;
+     font-family: cursive;
+     font-size: 16.5px;
+ }
+ h4{
+    font-family:  Forte;
+ color:  #ffd800;
+ font-size: 25px;
+ }
+ p#what, p#who{
+     font-weight:200;
+     color: #ff006e;
+     font-size: 20px;
+     font-family: cursive  ;
+ }
+ /* Pagination Style
+-------------------------------------------------- */
+​
+.pagination-ys {
+    /*display: inline-block;*/
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+​
+.pagination-ys table > tbody > tr > td {
+    display: inline;
+}
+​
+.pagination-ys table > tbody > tr > td > a ,
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #dd4814;
+    background-color: #f5f2f2;
+    border: 1px solid #dddddd;
+    margin-left: -1px;
+}
+
+.pagination-ys table > tbody > tr > td > a ,​
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;    
+    margin-left: -1px;
+    z-index: 2;
+    color: #aea79f;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+}
+​
+.pagination-ys table > tbody > tr > td:first-child > a,
+.pagination-ys table > tbody > tr > td:first-child > span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+​
+.pagination-ys table > tbody > tr > td:last-child > a,
+.pagination-ys table > tbody > tr > td:last-child > span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+​
+.pagination-ys table > tbody > tr > td > a:hover,
+.pagination-ys table > tbody > tr > td > span:hover,
+.pagination-ys table > tbody > tr > td > a:focus,
+.pagination-ys table > tbody > tr > td > span:focus {
+    color: #97310e;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+}
